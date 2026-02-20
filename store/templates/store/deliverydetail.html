@@ -1,0 +1,35 @@
+
+{% extends "store/base.html" %}
+{% load static %}
+
+{% block title %}Delivery #{{ object.pk }}{% endblock title %}
+{% block content %}
+<div class="container py-4">
+  <h2>Delivery #{{ object.pk }}</h2>
+  <dl class="row">
+    <dt class="col-sm-3">Customer</dt>
+    <dd class="col-sm-9">{{ object.customer_name|default:"—" }}</dd>
+
+    <dt class="col-sm-3">Phone</dt>
+    <dd class="col-sm-9">{{ object.phone_number|default:"—" }}</dd>
+
+    <dt class="col-sm-3">Location</dt>
+    <dd class="col-sm-9">{{ object.location|default:"—" }}</dd>
+
+    <dt class="col-sm-3">Date</dt>
+    <dd class="col-sm-9">{{ object.date }}</dd>
+
+    <dt class="col-sm-3">Delivered?</dt>
+    <dd class="col-sm-9">{{ object.is_delivered }}</dd>
+
+    <dt class="col-sm-3">Item</dt>
+    <dd class="col-sm-9">{{ object.item|default:"—" }}</dd>
+  </dl>
+
+  <hr>
+  {% url 'delivery-invoice' object.pk %}
+  Download invoice
+  </a>
+</div>
+{% endblock content %}
+
